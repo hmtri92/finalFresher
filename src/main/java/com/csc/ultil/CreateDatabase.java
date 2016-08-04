@@ -118,7 +118,7 @@ public class CreateDatabase {
 		User minhtri = new User();
 		minhtri.setId("012345678903");
 		minhtri.setLoginID("admin");
-		minhtri.setPassword("$2a$10$4HKVeFVczIQOoRMQ7tCb0OIob6GE7RgmcIqh1VKmuRFJApnmnampi");
+		minhtri.setPassword("$2a$10$O8H9q.EDZMES4iube3ZGYOAKHHcAv7pXMtJB52URqzS2BJl3ONUO6");
 		minhtri.setIdCardNumber("272015010"); 
 		minhtri.setFirstName("Tri");
 		minhtri.setMidName("Minh");
@@ -154,7 +154,7 @@ public class CreateDatabase {
 		phuc.setRole(roleSupport);
 		phuc.setState(state2);
 		phuc.setLoginID("support");
-		phuc.setPassword("$2a$10$4HKVeFVczIQOoRMQ7tCb0OIob6GE7RgmcIqh1VKmuRFJApnmnampi");
+		phuc.setPassword("$2a$10$O8H9q.EDZMES4iube3ZGYOAKHHcAv7pXMtJB52URqzS2BJl3ONUO6");
 		phuc.setAvailableAmount( BigDecimal.valueOf(1000000));
 		
 		Role roleCustomer = em.find(Role.class, Role.CUSTOMER);
@@ -163,7 +163,7 @@ public class CreateDatabase {
 		User quocanh = new User();
 		quocanh.setId("012345678901");
 		quocanh.setLoginID("customer");
-		quocanh.setPassword("$2a$10$4HKVeFVczIQOoRMQ7tCb0OIob6GE7RgmcIqh1VKmuRFJApnmnampi");
+		quocanh.setPassword("$2a$10$O8H9q.EDZMES4iube3ZGYOAKHHcAv7pXMtJB52URqzS2BJl3ONUO6");
 		quocanh.setIdCardNumber("272015010"); 
 		quocanh.setFirstName("Tri");
 		quocanh.setMidName("Minh");
