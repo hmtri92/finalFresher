@@ -29,6 +29,12 @@
 	</properties>
 
 	<dependencies>
+	
+	<dependency>
+	    <groupId>xml-apis</groupId>
+	    <artifactId>xml-apis</artifactId>
+	    <version>1.4.01</version>
+	</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -218,6 +224,7 @@
 		    <artifactId>jna-platform</artifactId>
 		    <version>4.0.0</version>
 		</dependency>
+		
 		<!-- JUnit test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -225,6 +232,7 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<!-- TestNG -->
 		<dependency>
 			<groupId>org.testng</groupId>
