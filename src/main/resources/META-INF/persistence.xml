@@ -15,11 +15,12 @@
 		<properties>
 			<property name="hibernate.connection.charSet" value="UTF-8" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://20.203.153.48:3306/finalDataBase" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://20.203.153.48/:3306/finalDataBase" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.password" value="root" />
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="create" /> 
+			<property name="hibernate.hbm2ddl.auto" value="update" /> 
 		</properties>
 	</persistence-unit>
 </persistence>
