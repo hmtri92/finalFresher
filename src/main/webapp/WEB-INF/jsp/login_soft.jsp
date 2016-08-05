@@ -107,12 +107,12 @@
 			<div class="form-actions">
 				<c:choose>
 					<c:when test="${count >= 3}">
-						<button type="submit" class="btn blue pull-right" disabled="disabled">
+						<button  type="submit" class="btn blue pull-right save" disabled="disabled">
 						Login <i class="m-icon-swapright m-icon-white"></i>
 						</button>
 					</c:when>
 					<c:otherwise>
-						<button type="submit" class="btn blue pull-right">
+						<button type="submit" class="btn blue pull-right save">
 						Login <i class="m-icon-swapright m-icon-white"></i>
 						</button>
 					</c:otherwise>

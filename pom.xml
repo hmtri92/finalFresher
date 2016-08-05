@@ -25,6 +25,7 @@
 		<mysql.version>5.1.31</mysql.version>
 		<org.mockito.version>1.9.5</org.mockito.version>
 		<junit.version>4.11</junit.version>
+		<selenium.version>2.53.1</selenium.version>
 	</properties>
 
 	<dependencies>
@@ -186,13 +187,7 @@
 			<version>1.9.13</version>
 		</dependency>
 		
-		<!-- JUnit test -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -207,6 +202,42 @@
 			<version>1.2.17</version>
 		</dependency>
 		
+		<!-- Selenium Automatic Test -->
+		<dependency>
+	        <groupId>org.seleniumhq.selenium</groupId>
+	        <artifactId>selenium-server</artifactId>
+	        <version>${selenium.version}</version>
+   		 </dependency>
+   		 <dependency>
+		    <groupId>com.sun.jna</groupId>
+		    <artifactId>jna</artifactId>
+		    <version>3.0.9</version>
+		</dependency>
+		<dependency>
+		    <groupId>net.java.dev.jna</groupId>
+		    <artifactId>jna-platform</artifactId>
+		    <version>4.0.0</version>
+		</dependency>
+		<!-- JUnit test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- TestNG -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.10</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+	        <artifactId>guava</artifactId>
+	        <groupId>com.google.guava</groupId>
+	        <type>jar</type>
+	        <version>15.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
