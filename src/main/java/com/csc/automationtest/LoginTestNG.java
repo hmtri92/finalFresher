@@ -1,7 +1,6 @@
 package com.csc.automationtest;
 
 
-import javax.validation.constraints.AssertFalse;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +16,7 @@ public class LoginTestNG {
 
 	WebDriver driver;
 	 
-	boolean iCheck;
+	String pageTitle = "";
 	
 	@BeforeMethod
 	public void setUp() throws Exception {
@@ -28,14 +27,13 @@ public class LoginTestNG {
 
 	@AfterMethod
 	public void tearDown() throws Exception {
-		String pageTitle = driver.getTitle();
-		Assert.assertEquals(pageTitle, "Login1");
+		Assert.assertEquals(pageTitle, "Login");
 		driver.close();
 	}
 
 	@Test
 	public void test() throws Exception {
-		String pageTitle = driver.getTitle();
+		pageTitle = driver.getTitle();
         if (!pageTitle.equals("Login"))
         {
             System.out.println("Launched the incorrect webpage");
