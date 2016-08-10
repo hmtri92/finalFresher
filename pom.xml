@@ -248,6 +248,11 @@
 	        <type>jar</type>
 	        <version>15.0</version>
 		</dependency>
+			<dependency>
+	        <groupId>com.google.gdata</groupId>
+	        <artifactId>core</artifactId>
+	        <version>1.47.1</version>
+	    </dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -289,10 +294,10 @@
 		     	<!-- <includes>
 		            <include>LoginJunit.java</include>
 		         </includes> -->
-		        <!--  <suiteXmlFiles>
+		         <suiteXmlFiles>
 		         	<suiteXmlFile>testng.xml</suiteXmlFile>
 		         </suiteXmlFiles>
-		         <threadCount>1</threadCount> -->
+		         <threadCount>1</threadCount>
             </configuration>
              
 		    <dependencies>

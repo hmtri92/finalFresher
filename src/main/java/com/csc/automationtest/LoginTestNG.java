@@ -22,7 +22,7 @@ public class LoginTestNG {
 	  @BeforeClass(alwaysRun = true)
 	  public void setUp() throws Exception {
 	    driver = new FirefoxDriver();
-	    baseUrl = "http://localhost:8080/final-project/login";
+	    baseUrl = " http://20.203.153.48:8090/selenium-demo/login";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 
