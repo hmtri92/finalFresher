@@ -2,50 +2,87 @@ package com.csc.automationtest;
 
 
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
 public class LoginTestNG {
 
-	WebDriver driver;
-	
-	@BeforeMethod
-	public void setUp() throws Exception {
-		driver = new FirefoxDriver();
-        driver.get("http://localhost:8080/final-project/login");
-        driver.manage().window().maximize();
-	}
+	private WebDriver driver;
+	  private String baseUrl;
+	  private boolean acceptNextAlert = true;
+	  private StringBuffer verificationErrors = new StringBuffer();
 
-	@AfterMethod
-	public void tearDown() throws Exception {
-		driver.close();
-	}
+	  @BeforeClass(alwaysRun = true)
+	  public void setUp() throws Exception {
+	    driver = new FirefoxDriver();
+	    baseUrl = "http://localhost:8080/final-project/login";
+	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	  }
 
-	@Test
-	public void test() throws Exception {
-		String pageTitle = driver.getTitle();
-        if (!pageTitle.equals("Login"))
-        {
-            System.out.println("Launched the incorrect webpage");
-            driver.close();
- 
-        } 
+	  @Test
+	  public void test1() throws Exception {
+	    driver.get(baseUrl + "");
+	    Assert.assertEquals(driver.getTitle(), "Login");
+	    driver.findElement(By.id("j_username")).clear();
+	    driver.findElement(By.id("j_username")).sendKeys("admin");
+	    driver.findElement(By.id("j_password")).clear();
+	    driver.findElement(By.id("j_password")).sendKeys("admin");
+	    driver.findElement(By.xpath("//button[@type='submit']")).click();
+	    Assert.assertEquals(driver.getTitle(), "CSC Banking System");
+	    driver.close();
+	  }
 
-        WebElement TB_Username = driver.findElement(By.id("j_username"));        
-        TB_Username.sendKeys("support");
-        
-        WebElement TB_Password = driver.findElement(By.id("j_password"));        
-        TB_Password.sendKeys("admin");
-        
+	  @AfterClass(alwaysRun = true)
+	  public void tearDown() throws Exception {
+	    driver.quit();
+	    String verificationErrorString = verificationErrors.toString();
+	    if (!"".equals(verificationErrorString)) {
+	      Assert.fail(verificationErrorString);
+	    }
+	  }
 
-        WebElement BTN_Login = driver.findElement(By.className("btn"));        
-        BTN_Login.click();
-	}
+	  private boolean isElementPresent(By by) {
+	    try {
+	      driver.findElement(by);
+	      return true;
+	    } catch (NoSuchElementException e) {
+	      return false;
+	    }
+	  }
+
+	  private boolean isAlertPresent() {
+	    try {
+	      driver.switchTo().alert();
+	      return true;
+	    } catch (NoAlertPresentException e) {
+	      return false;
+	    }
+	  }
+
+	  private String closeAlertAndGetItsText() {
+	    try {
+	      Alert alert = driver.switchTo().alert();
+	      String alertText = alert.getText();
+	      if (acceptNextAlert) {
+	        alert.accept();
+	      } else {
+	        alert.dismiss();
+	      }
+	      return alertText;
+	    } finally {
+	      acceptNextAlert = true;
+	    }
+	  }
 
 }
