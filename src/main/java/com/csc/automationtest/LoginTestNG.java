@@ -15,8 +15,6 @@ import org.testng.annotations.Test;
 public class LoginTestNG {
 
 	WebDriver driver;
-	 
-	String pageTitle = "";
 	
 	@BeforeMethod
 	public void setUp() throws Exception {
@@ -27,13 +25,12 @@ public class LoginTestNG {
 
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Assert.assertEquals(pageTitle, "Login");
 		driver.close();
 	}
 
 	@Test
 	public void test() throws Exception {
-		pageTitle = driver.getTitle();
+		String pageTitle = driver.getTitle();
         if (!pageTitle.equals("Login"))
         {
             System.out.println("Launched the incorrect webpage");
@@ -49,7 +46,8 @@ public class LoginTestNG {
         
 
         WebElement BTN_Login = driver.findElement(By.className("btn"));        
-        BTN_Login.click();        
+        BTN_Login.click();
+		Assert.assertEquals(pageTitle, "Login");
 	}
 
 }
