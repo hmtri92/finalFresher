@@ -289,10 +289,10 @@
 		     	<!-- <includes>
 		            <include>LoginJunit.java</include>
 		         </includes> -->
-		         <suiteXmlFiles>
+		        <!--  <suiteXmlFiles>
 		         	<suiteXmlFile>testng.xml</suiteXmlFile>
 		         </suiteXmlFiles>
-		         <threadCount>1</threadCount>
+		         <threadCount>1</threadCount> -->
             </configuration>
              
 		    <dependencies>
