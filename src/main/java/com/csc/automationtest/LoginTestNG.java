@@ -44,8 +44,7 @@ public class LoginTestNG {
 	  }
 	  @Test(priority = 2, dependsOnMethods= {"testLogin"})
 	  public void testHome() throws Exception {
-	    driver.findElement(By.xpath("//div[@id='bs-example-navbar-collapse-1']/ul[2]/li/a/span")).click();
-	    Assert.assertTrue(driver.findElement(By.id("loginId")) != null,"Cannot find Element User Information ");			       
+	    Assert.assertTrue(driver.getTitle().equals("CSC Banking System1"),"Cannot find Element User Information ");			       
 	  }
 	  @AfterClass(alwaysRun = true)
 	  public void tearDown() throws Exception {
