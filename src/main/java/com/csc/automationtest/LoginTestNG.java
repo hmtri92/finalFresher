@@ -20,6 +20,7 @@ public class LoginTestNG {
 
 	private WebDriver driver;
 	  private String baseUrl;
+	  
 	  private StringBuffer verificationErrors = new StringBuffer();
 	  @BeforeClass(alwaysRun = true)
 	  public void setUp() throws Exception {
