@@ -39,12 +39,12 @@ public class LoginTestNG {
 	    driver.findElement(By.id("j_password")).sendKeys("admin");
 	    driver.findElement(By.xpath("//button[@type='submit']")).click();
 	    if(driver.getTitle().equals("CSC Banking System")){	 
-	    	Assert.assertTrue(true,"Login Failed!");
+	    	Assert.assertTrue(false,"Login Failed!");
 	    }
 	  }
 	  @Test(priority = 2, dependsOnMethods= {"testLogin"})
 	  public void testHome() throws Exception {
-	    Assert.assertTrue(driver.getTitle().equals("CSC Banking System1"),"Cannot find Element User Information ");			       
+	    Assert.assertTrue(driver.getTitle().equals("CSC Banking System1"),"Cannot find title CSC Banking System");			       
 	  }
 	  @AfterClass(alwaysRun = true)
 	  public void tearDown() throws Exception {
