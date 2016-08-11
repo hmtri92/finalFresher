@@ -21,6 +21,8 @@ public class LoginTestNG {
 	private WebDriver driver;
 	  private String baseUrl;
 	  private StringBuffer verificationErrors = new StringBuffer();
+	  private boolean iCheck = false;
+	  
 	  @BeforeClass(alwaysRun = true)
 	  public void setUp() throws Exception {
 	    driver = new FirefoxDriver();	    
@@ -37,11 +39,16 @@ public class LoginTestNG {
 	    driver.findElement(By.id("j_password")).clear();
 	    driver.findElement(By.id("j_password")).sendKeys("admin");
 	    driver.findElement(By.xpath("//button[@type='submit']")).click();
-	    if(driver.getTitle().equals("CSC Banking System")){
-	    	Assert.assertTrue(true,"Login Success!");
+	    if(driver.getTitle().equals("CSC Banking System")){	    	
+	    	iCheck = true;
+	    	Assert.assertTrue(true,"Login Failed!");
 	    }
 	  }
-	  
+	  @Test(priority = 2)
+	  public void testHome() throws Exception {
+	    driver.findElement(By.xpath("//div[@id='bs-example-navbar-collapse-1']/ul[2]/li/a/span")).click();
+	    Assert.assertEquals(driver.findElement(By.cssSelector("div.caption")).getText(), "User Information1","Cannot find Element User Information ");			       
+	  }
 	  @AfterClass(alwaysRun = true)
 	  public void tearDown() throws Exception {
 	    driver.quit();
