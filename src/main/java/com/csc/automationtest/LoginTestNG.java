@@ -21,7 +21,6 @@ public class LoginTestNG {
 	private WebDriver driver;
 	  private String baseUrl;
 	  private StringBuffer verificationErrors = new StringBuffer();
-	  private abc;
 	  @BeforeClass(alwaysRun = true)
 	  public void setUp() throws Exception {
 	    driver = new FirefoxDriver();	    
@@ -45,7 +44,7 @@ public class LoginTestNG {
 	  }
 	  @Test(priority = 2, dependsOnMethods= {"testLogin"})
 	  public void testHome() throws Exception {
-	    Assert.assertTrue(driver.getTitle().equals("CSC Banking System"),"Cannot find title CSC Banking System");			       
+	    Assert.assertTrue(driver.getTitle().equals("CSC Banking System1"),"Cannot find title CSC Banking System");			       
 	  }
 	  @AfterClass(alwaysRun = true)
 	  public void tearDown() throws Exception {
