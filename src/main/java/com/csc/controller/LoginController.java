@@ -30,10 +30,13 @@ public class LoginController {
 	@Autowired
 	AccountService accountService;
 	
+	public static String strURL = "";
+	
 	private Logger logger = Logger.getLogger(LoginController.class);
 
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
-	public String doLogin() {
+	public String doLogin(HttpServletRequest request) {
+		strURL = getBaseUrl(request);
 		return "login_soft";
 	}
 
@@ -119,5 +122,11 @@ public class LoginController {
 		
 		return "login_soft";
 	}
-
+	public static String getBaseUrl(HttpServletRequest request) {
+	    String scheme = request.getScheme() + "://";
+	    String serverName = request.getServerName();
+	    String serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();
+	    String contextPath = request.getContextPath();
+	    return scheme + serverName + serverPort + contextPath;
+	  }
 }
