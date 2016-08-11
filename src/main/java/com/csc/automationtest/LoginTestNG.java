@@ -38,8 +38,8 @@ public class LoginTestNG {
 	    driver.findElement(By.id("j_password")).sendKeys("admin");
 	    driver.findElement(By.xpath("//button[@type='submit']")).click();
 	    if(driver.getTitle().equals("CSC Banking System")){
-	    	Assert.assertTrue(false,"Login Success!");
-	    }	    
+	    	Assert.assertTrue(true,"Login Success!");
+	    }
 	  }
 	  
 	  @AfterClass(alwaysRun = true)
