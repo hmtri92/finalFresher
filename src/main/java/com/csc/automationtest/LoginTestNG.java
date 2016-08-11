@@ -21,7 +21,6 @@ public class LoginTestNG {
 	private WebDriver driver;
 	  private String baseUrl;
 	  private StringBuffer verificationErrors = new StringBuffer();
-	  private boolean iCheck = false;
 	  
 	  @BeforeClass(alwaysRun = true)
 	  public void setUp() throws Exception {
@@ -39,15 +38,14 @@ public class LoginTestNG {
 	    driver.findElement(By.id("j_password")).clear();
 	    driver.findElement(By.id("j_password")).sendKeys("admin");
 	    driver.findElement(By.xpath("//button[@type='submit']")).click();
-	    if(driver.getTitle().equals("CSC Banking System")){	    	
-	    	iCheck = true;
-	    	Assert.assertTrue(true,"Login Failed!");
+	    if(driver.getTitle().equals("CSC Banking System")){	 
+	    	Assert.assertTrue(false,"Login Failed!");
 	    }
 	  }
-	  @Test(priority = 2)
+	  @Test(priority = 2, dependsOnMethods= {"testLogin"})
 	  public void testHome() throws Exception {
 	    driver.findElement(By.xpath("//div[@id='bs-example-navbar-collapse-1']/ul[2]/li/a/span")).click();
-	    Assert.assertEquals(driver.findElement(By.cssSelector("div.caption")).getText(), "User Information1","Cannot find Element User Information ");			       
+	    Assert.assertTrue(driver.findElement(By.cssSelector("div.caption")).getText().equals("User Information"),"Cannot find Element User Information ");			       
 	  }
 	  @AfterClass(alwaysRun = true)
 	  public void tearDown() throws Exception {

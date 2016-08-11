@@ -10,8 +10,9 @@
     <classes>
       <class name="com.csc.automationtest.LoginTestNG">
         <methods>
+          <include name="testHome"/>
           <include name="tearDown"/>
-          <include name="test1"/>
+          <include name="testLogin"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- com.csc.automationtest.LoginTestNG -->
