@@ -4,30 +4,32 @@ package com.csc.automationtest;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 
 public class LoginTestNG {
 
 	private WebDriver driver;
 	  private String baseUrl;
 	  private StringBuffer verificationErrors = new StringBuffer();
-
 	  @BeforeClass(alwaysRun = true)
 	  public void setUp() throws Exception {
-	    driver = new FirefoxDriver();
-	    baseUrl = " http://20.203.153.48:8090/selenium-demo/login";
+	    driver = new FirefoxDriver();	    
+	    baseUrl = "http://20.203.153.48:8090/fresherProject/login";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 
-	  @Test
-	  public void test1() throws Exception {
+	  @Test(priority = 1)
+	  public void testLogin() throws Exception {
 	    driver.get(baseUrl + "");
 	    Assert.assertEquals(driver.getTitle(), "Login");
 	    driver.findElement(By.id("j_username")).clear();
@@ -35,10 +37,11 @@ public class LoginTestNG {
 	    driver.findElement(By.id("j_password")).clear();
 	    driver.findElement(By.id("j_password")).sendKeys("admin");
 	    driver.findElement(By.xpath("//button[@type='submit']")).click();
-	    Assert.assertEquals(driver.getTitle(), "CSC Banking System");
-	    driver.close();
+	    if(driver.getTitle().equals("CSC Banking System")){
+	    	Assert.assertTrue(false,"Login Success!");
+	    }	    
 	  }
-
+	  
 	  @AfterClass(alwaysRun = true)
 	  public void tearDown() throws Exception {
 	    driver.quit();
@@ -46,5 +49,18 @@ public class LoginTestNG {
 	    if (!"".equals(verificationErrorString)) {
 	      Assert.fail(verificationErrorString);
 	    }
+	  }
+	public static String getBaseUrl() {
+		  HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+		  String url = "";
+		  url = getBaseUrl(request)+ "/login";
+		  return url;
+	}
+	public static String getBaseUrl(HttpServletRequest request) {
+	    String scheme = request.getScheme() + "://";
+	    String serverName = request.getServerName();
+	    String serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();
+	    String contextPath = request.getContextPath();
+	    return scheme + serverName + serverPort + contextPath;
 	  }
 }
