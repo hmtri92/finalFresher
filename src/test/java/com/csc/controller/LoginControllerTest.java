@@ -8,7 +8,7 @@ public class LoginControllerTest {
 
 	@Test
 	public void testDoLogin() {
-		assertEquals("A", "B");    
+		assertEquals("A", "BC");    
 	}
 	@Test
 	public void testLoginFail() {
