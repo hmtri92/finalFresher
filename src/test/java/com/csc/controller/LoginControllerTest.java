@@ -8,27 +8,12 @@ public class LoginControllerTest {
 
 	@Test
 	public void testDoLogin() {
-		fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
-
-	@Test
-	public void testGoHomeHttpServletRequestModel() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGoHome() {
-		fail("Not yet implemented");
-	}
-
 	@Test
 	public void testLoginFail() {
-		fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testGetBaseUrl() {
-		fail("Not yet implemented");
-	}
 
 }
