@@ -8,7 +8,7 @@ public class LoginControllerTest {
 
 	@Test
 	public void testDoLogin() {
-//		fail("Not yet implemented");
+		fail("Not yet implemented");
 	}
 	@Test
 	public void testLoginFail() {
