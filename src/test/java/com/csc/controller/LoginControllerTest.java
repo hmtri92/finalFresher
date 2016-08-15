@@ -8,7 +8,7 @@ public class LoginControllerTest {
 
 	@Test
 	public void testDoLogin() {
-		fail("Not yet implemented");
+		assertEquals("true", "false");    
 	}
 	@Test
 	public void testLoginFail() {
