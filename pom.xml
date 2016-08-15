@@ -24,7 +24,7 @@
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<mysql.version>5.1.31</mysql.version>
 		<org.mockito.version>1.9.5</org.mockito.version>
-		<junit.version>4.9</junit.version>
+		<junit.version>4.11</junit.version>
 		<selenium.version>2.53.1</selenium.version>
 		<logback.version>1.0.13</logback.version>
 		<jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
@@ -291,9 +291,9 @@
 		    <version>2.19.1</version>
 		    <inherited>true</inherited>
 		     <configuration>
-		     	<!-- <includes>
-		            <include>LoginJunit.java</include>
-		         </includes> -->
+		     	<includes>
+		            <include>LoginControllerTest.java</include>
+		         </includes>
 		         <suiteXmlFiles>
 		         	<suiteXmlFile>testng.xml</suiteXmlFile>
 		         </suiteXmlFiles>
