@@ -26,4 +26,9 @@ public class LoginControllerTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void testGetBaseUrl() {
+		fail("Not yet implemented");
+	}
+
 }
