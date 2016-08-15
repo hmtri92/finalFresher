@@ -291,9 +291,9 @@
 		    <version>2.19.1</version>
 		    <inherited>true</inherited>
 		     <configuration>
-		     	<includes>
+		     	<!-- includes>
 		            <include>LoginControllerTest.java</include>
-		         </includes>
+		         </includes> -->
 		         <suiteXmlFiles>
 		         	<suiteXmlFile>testng.xml</suiteXmlFile>
 		         </suiteXmlFiles>
