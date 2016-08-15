@@ -61,10 +61,5 @@ public class PasswordUtils {
 		String password = "admin";
 		String encodePassword = encodePassword(password);
 		System.out.println(encodePassword);
-		// commit to resolve
-		// commit to resolve
-		// commit to resolve
-		// commit to resolve
-		// commit to resolve
 	}
 }
