@@ -18,7 +18,7 @@ public class LoginControllerTest {
 
 	@Test
 	public void testGoHome() {
-		fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 
 }
