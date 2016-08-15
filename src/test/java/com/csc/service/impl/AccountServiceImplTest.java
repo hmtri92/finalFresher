@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.csc.entities.Account;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/config/test-context.xml"})
+//@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/config/test-context.xml"})
 @Transactional
 @TransactionConfiguration (defaultRollback = true)
 public class AccountServiceImplTest {

@@ -25,7 +25,7 @@ import com.csc.entities.TransactionHistory;
 import com.csc.service.FundService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/config/test-context.xml"})
+//@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/config/test-context.xml"})
 @Transactional
 @TransactionConfiguration (defaultRollback = true)
 public class FundServiceImplTest {
