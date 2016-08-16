@@ -13,6 +13,7 @@ public class LoginControllerTest {
 	@Test
 	public void testLoginFail() {
 //		fail("Not yet implemented");
+		assertEquals("TEST", "TEST");    
 	}
 
 
