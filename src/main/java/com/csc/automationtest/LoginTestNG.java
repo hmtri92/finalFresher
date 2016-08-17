@@ -1,6 +1,7 @@
 package com.csc.automationtest;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,23 +43,24 @@ public class LoginTestNG {
 		driver.findElement(By.id("j_password")).clear();
 		driver.findElement(By.id("j_password")).sendKeys("admin");
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		
+		takeScreenshot(driver, "login");
+		
 		if (driver.getTitle().equals("CSC Banking System")) {
 			Assert.assertTrue(true, "Login Failed!");
 		}
-		
-		File tempFile = ((TakesScreenshot) driver)
-	            .getScreenshotAs(OutputType.FILE);
-	    FileUtils.copyFile(tempFile, new File("screenshots/testLogin.png"));
+
+		takeScreenshot(driver, "testLogin");
 	}
 
 	@Test(priority = 2, dependsOnMethods = { "testLogin" })
 	public void testHome() throws Exception {
+		takeScreenshot(driver, "testHome1");
+		
 		Assert.assertTrue(driver.getTitle().equals("CSC Banking System1"),
 				"Cannot find title CSC Banking System");
-		
-		File tempFile = ((TakesScreenshot) driver)
-	            .getScreenshotAs(OutputType.FILE);
-	    FileUtils.copyFile(tempFile, new File("screenshots/testHome.png"));
+
+		takeScreenshot(driver, "testHome2");
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -85,5 +87,15 @@ public class LoginTestNG {
 				+ request.getServerPort();
 		String contextPath = request.getContextPath();
 		return scheme + serverName + serverPort + contextPath;
+	}
+
+	public static void takeScreenshot(WebDriver driver, String name)
+			throws IOException {
+		if (driver instanceof TakesScreenshot) {
+			File tempFile = ((TakesScreenshot) driver)
+					.getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(tempFile,
+					new File(String.format("target/surefire-reports/screenshots/%s.png", name)));
+		}
 	}
 }
