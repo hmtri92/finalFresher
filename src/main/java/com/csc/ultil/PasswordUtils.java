@@ -60,6 +60,7 @@ public class PasswordUtils {
 	public static void main(String[] args) {
 		String password = "admin";
 		String encodePassword = encodePassword(password);
+		encodePassword = encodePassword(encodePassword);
 		System.out.println(encodePassword);
 	}
 }
