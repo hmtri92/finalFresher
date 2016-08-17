@@ -55,6 +55,8 @@ public class LoginTestNG {
 
 	@Test(priority = 2, dependsOnMethods = { "testLogin" })
 	public void testHome() throws Exception {
+		takeScreenshot(driver, "testHome1");
+		
 		Assert.assertTrue(driver.getTitle().equals("CSC Banking System1"),
 				"Cannot find title CSC Banking System");
 
