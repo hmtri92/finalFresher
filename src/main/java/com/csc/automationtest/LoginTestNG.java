@@ -1,12 +1,14 @@
 package com.csc.automationtest;
 
-
-
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -19,53 +21,71 @@ import org.testng.annotations.Test;
 public class LoginTestNG {
 
 	private WebDriver driver;
-	  private String baseUrl;
-	  
-	  private StringBuffer verificationErrors = new StringBuffer();
-	  @BeforeClass(alwaysRun = true)
-	  public void setUp() throws Exception {
-	    driver = new FirefoxDriver();	    
-	    baseUrl = "http://20.203.153.48:8090/fresherProject/login";
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	    
-	  }
+	private String baseUrl;
 
-	  @Test(priority = 1)
-	  public void testLogin() throws Exception {
-	    driver.get(baseUrl + "");
-	    Assert.assertEquals(driver.getTitle(), "Login");
-	    driver.findElement(By.id("j_username")).clear();
-	    driver.findElement(By.id("j_username")).sendKeys("admin");	    
-	    driver.findElement(By.id("j_password")).clear();
-	    driver.findElement(By.id("j_password")).sendKeys("admin");
-	    driver.findElement(By.xpath("//button[@type='submit']")).click();
-	    if(driver.getTitle().equals("CSC Banking System")){	 
-	    	Assert.assertTrue(true,"Login Failed!");
-	    }
-	  }
-	  @Test(priority = 2, dependsOnMethods= {"testLogin"})
-	  public void testHome() throws Exception {
-	    Assert.assertTrue(driver.getTitle().equals("CSC Banking System1"),"Cannot find title CSC Banking System");			       
-	  }
-	  @AfterClass(alwaysRun = true)
-	  public void tearDown() throws Exception {
-	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      Assert.fail(verificationErrorString);
-	    }
-	  }
-	public static String getBaseUrl() {
-		  HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-		  String url = "";
-		  url = getBaseUrl(request)+ "/login";
-		  return url;
+	private StringBuffer verificationErrors = new StringBuffer();
+
+	@BeforeClass(alwaysRun = true)
+	public void setUp() throws Exception {
+		driver = new FirefoxDriver();
+		baseUrl = "http://20.203.153.48:8090/fresherProject/login";
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		// File scrFile =
+		// ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		// FileUtils.copyFile(scrFile, new File("/tmp/screenshot.png"));
+
 	}
+
+	@Test(priority = 1)
+	public void testLogin() throws Exception {
+		driver.get(baseUrl + "");
+		Assert.assertEquals(driver.getTitle(), "Login");
+		driver.findElement(By.id("j_username")).clear();
+		driver.findElement(By.id("j_username")).sendKeys("admin");
+		driver.findElement(By.id("j_password")).clear();
+		driver.findElement(By.id("j_password")).sendKeys("admin");
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		if (driver.getTitle().equals("CSC Banking System")) {
+			Assert.assertTrue(true, "Login Failed!");
+		}
+
+		File scrFile = ((TakesScreenshot) driver)
+				.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File("screenshots/testLogin.png"));
+	}
+
+	@Test(priority = 2, dependsOnMethods = { "testLogin" })
+	public void testHome() throws Exception {
+		Assert.assertTrue(driver.getTitle().equals("CSC Banking System1"),
+				"Cannot find title CSC Banking System");
+		File scrFile = ((TakesScreenshot) driver)
+				.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File("screenshots/testHome.png"));
+	}
+
+	@AfterClass(alwaysRun = true)
+	public void tearDown() throws Exception {
+		driver.quit();
+		String verificationErrorString = verificationErrors.toString();
+		if (!"".equals(verificationErrorString)) {
+			Assert.fail(verificationErrorString);
+		}
+	}
+
+	public static String getBaseUrl() {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
+				.currentRequestAttributes()).getRequest();
+		String url = "";
+		url = getBaseUrl(request) + "/login";
+		return url;
+	}
+
 	public static String getBaseUrl(HttpServletRequest request) {
-	    String scheme = request.getScheme() + "://";
-	    String serverName = request.getServerName();
-	    String serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();
-	    String contextPath = request.getContextPath();
-	    return scheme + serverName + serverPort + contextPath;
-	  }
+		String scheme = request.getScheme() + "://";
+		String serverName = request.getServerName();
+		String serverPort = (request.getServerPort() == 80) ? "" : ":"
+				+ request.getServerPort();
+		String contextPath = request.getContextPath();
+		return scheme + serverName + serverPort + contextPath;
+	}
 }
