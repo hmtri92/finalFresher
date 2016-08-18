@@ -8,11 +8,12 @@ public class LoginControllerTest {
 
 	@Test
 	public void testDoLogin() {
-		fail("Not yet implemented");
+		assertEquals("A", "BC");    
 	}
 	@Test
 	public void testLoginFail() {
 //		fail("Not yet implemented");
+		assertEquals("TEST", "TEST");    
 	}
 
 
