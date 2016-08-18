@@ -36,8 +36,6 @@ public class LoginTestNG {
 
 	@Test(priority = 1)
 	public void testLogin() throws Exception {
-		takeScreenshot(driver, "login1");
-		
 		driver.get(baseUrl + "");
 		Assert.assertEquals(driver.getTitle(), "Login");
 		driver.findElement(By.id("j_username")).clear();
@@ -46,6 +44,7 @@ public class LoginTestNG {
 		driver.findElement(By.id("j_password")).sendKeys("admin");
 		
 		takeScreenshot(driver, "testLogin");
+		
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 		
 		if (driver.getTitle().equals("CSC Banking System")) {
@@ -60,8 +59,6 @@ public class LoginTestNG {
 		
 		Assert.assertTrue(driver.getTitle().equals("CSC Banking System1"),
 				"Cannot find title CSC Banking System");
-
-		takeScreenshot(driver, "testHome2");
 	}
 
 	@AfterClass(alwaysRun = true)
