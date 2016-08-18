@@ -36,7 +36,7 @@ public class LoginTestNG {
 
 	@Test(priority = 1)
 	public void testLogin() throws Exception {
-		takeScreenshot(driver, "login");
+		takeScreenshot(driver, "login1");
 		
 		driver.get(baseUrl + "");
 		Assert.assertEquals(driver.getTitle(), "Login");
@@ -44,13 +44,14 @@ public class LoginTestNG {
 		driver.findElement(By.id("j_username")).sendKeys("admin");
 		driver.findElement(By.id("j_password")).clear();
 		driver.findElement(By.id("j_password")).sendKeys("admin");
+		
+		takeScreenshot(driver, "testLogin");
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 		
 		if (driver.getTitle().equals("CSC Banking System")) {
 			Assert.assertTrue(true, "Login Failed!");
 		}
 
-		takeScreenshot(driver, "testLogin");
 	}
 
 	@Test(priority = 2, dependsOnMethods = { "testLogin" })
