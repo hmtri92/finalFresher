@@ -17,7 +17,7 @@
 	<!-- Shared version number properties -->
 	<properties>
 		<org.springframework.version>4.0.5.RELEASE</org.springframework.version>
-		<spring.security.version>3.2.5.RELEASE</spring.security.version>
+		<spring.security.version>5.2.10.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
 		<javax.servlet.version>3.1.0</javax.servlet.version>
 		<hibernate.version>4.3.3.Final</hibernate.version>
