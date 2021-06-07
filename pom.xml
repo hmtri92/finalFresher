@@ -26,7 +26,7 @@
 		<org.mockito.version>1.9.5</org.mockito.version>
 		<junit.version>4.11</junit.version>
 		<selenium.version>2.53.1</selenium.version>
-		<logback.version>1.0.13</logback.version>
+		<logback.version>1.2.0</logback.version>
 		<jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
 	</properties>
 
